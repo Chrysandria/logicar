@@ -12,11 +12,16 @@ export async function fetcher({
             params: params,
             data: data
         })
-        console.log(response);
         
-        return response.data?.message ?? "Traitement éfféctué";
+        return {
+            success: true,
+            message: response.data?.message ?? "Traitement éfféctué"
+        }
     }catch(e){
         console.error(e);
-        return e.response?.data?.error ?? "Une érreur a été rencontrer, traitement innachevé !!!";
+        return {
+            success: false,
+            message: e.response?.data?.error ?? "Une érreur a été rencontrer, traitement innachevé !!!"
+        }
     }
 }

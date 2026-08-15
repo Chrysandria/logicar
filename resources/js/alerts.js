@@ -23,9 +23,9 @@ export default {
         return question.isConfirmed;
     },
 
-    loading(title,text) {
+    loading(text) {
         Swal.fire({
-            title: title,
+            title: "Veuillez patienter.",
             text: text,
             allowOutsideClick: false,
             allowEscapeKey: false,
@@ -37,5 +37,13 @@ export default {
 
     close(){
         Swal.close();
+    },
+
+    switch(data){
+        if(data.success){
+        this.notify("Succés !!!",data.message,"success");
+    } else {
+        this.notify("Erreur !!!",data.message,"error");
     }
+    },
 }
